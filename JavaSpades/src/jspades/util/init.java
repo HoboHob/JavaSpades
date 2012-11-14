@@ -60,7 +60,7 @@ public class init {
 		
 		//Misc OpenGL stuff
 		glShadeModel(GL_SMOOTH); //Smooth shading enabled
-		glClearColor(1.0f,0.0f,0.0f,0.0f); //Set a nice black background
+		glClearColor(0.2f,0.2f,0.2f,0.2f); //Set a nice black background
 		glClearDepth(1.0f); //Depth stuff that I know nothing about :P
 		glEnable(GL_DEPTH_TEST);
 		glDepthFunc(GL_LEQUAL);

@@ -12,24 +12,24 @@ import jspades.util.Drawing;
 public class Cube {
 	private float x, y, z;
 	private float r, g, b;
-	private float rot, xvec, yvec, zvec;
 	
-	public Cube()
+	public Cube(float sx, float sy, float sz, float sr, float sg, float sb)
 	{
-		x = y = 0.0f;
-		z = -12.0f;
-		r = g = b = 0.7f;
-		rot = xvec = zvec = 0.0f;
-		yvec = 1.0f;
+		x = sx;
+		y = sy;
+		z = sz;
+		r = sr;
+		g = sg;
+		b = sb;
 	}
 	
 	public void update()
 	{
-		rot += 1.0f;
+		//TODO
 	}
 	
 	public void render()
 	{
-		Drawing.Cube(x, y, z, rot, xvec, yvec, zvec, r, g, b);
+		Drawing.Block(x, y, z, r, g, b, 0.05f);
 	}
 }

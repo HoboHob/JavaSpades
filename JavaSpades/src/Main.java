@@ -20,8 +20,8 @@ import jspades.util.tick;
  */
 
 public class Main {
-	
-	private static Cube cube = new Cube();
+	private static Map normandie = new Map();
+	private static Player player = new Player(0.0f,0.0f,0.0f, 0.0f);
 	
 	public static void main(String[] args) {
 		run();
@@ -33,7 +33,7 @@ public class Main {
 		init.initDisplay();
 		
 		//Initialize OpenGL
-		init.initOpenGL();	
+		init.initOpenGL();
 		
 		//Main loop
 		while(!Display.isCloseRequested())
@@ -52,14 +52,15 @@ public class Main {
 	
 	private static void update()
 	{
-		cube.update();
+		normandie.update();
+		player.update();
 	}
 	
 	private static void render()
 	{
 		tick.clearBuffers();
 		
-		cube.render();
+		normandie.render(player);
 		
 		tick.updateDisplay();
 	}
