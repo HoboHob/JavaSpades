@@ -20,7 +20,7 @@ import jspades.util.tick;
  */
 
 public class Main {
-	private static Map normandie = new Map();
+	private static Map map = new Map();
 	private static Player player = new Player(0.0f,0.0f,0.0f, 0.0f);
 	
 	public static void main(String[] args) {
@@ -52,7 +52,7 @@ public class Main {
 	
 	private static void update()
 	{
-		normandie.update();
+		map.update();
 		player.update();
 	}
 	
@@ -60,7 +60,7 @@ public class Main {
 	{
 		tick.clearBuffers();
 		
-		normandie.render(player);
+		map.render(player);
 		
 		tick.updateDisplay();
 	}

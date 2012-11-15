@@ -1,5 +1,7 @@
 import static org.lwjgl.opengl.GL11.*;
 import org.lwjgl.input.Mouse;
+import org.lwjgl.input.Keyboard;
+import jspades.util.Trig;
 
 public class Player {
 	public float x,y,z;
@@ -7,6 +9,7 @@ public class Player {
 	
 	public Player(float sx, float sy, float sz, float ry)
 	{
+		Mouse.setGrabbed(true);
 		x = sx;
 		y = sy;
 		z = sz;
@@ -15,11 +18,50 @@ public class Player {
 	
 	public void update()
 	{
+		//Move forward
+		if(Keyboard.isKeyDown(Keyboard.KEY_W))
+		{
+			x += Trig.lengthDirX(0.01, rotY+90);
+			z -= Trig.lengthDirY(0.01, rotY+90);
+		}
+		//Move backwards
+		if(Keyboard.isKeyDown(Keyboard.KEY_S))
+		{
+			x -= Trig.lengthDirX(0.01, rotY+90);
+			z += Trig.lengthDirY(0.01, rotY+90);
+		}
+		//Strafing
+		if(Keyboard.isKeyDown(Keyboard.KEY_A))
+		{
+			x += Trig.lengthDirX(0.01, rotY);
+			z -= Trig.lengthDirY(0.01, rotY);
+		}
+		if(Keyboard.isKeyDown(Keyboard.KEY_D))
+		{
+			x -= Trig.lengthDirX(0.01, rotY);
+			z += Trig.lengthDirY(0.01, rotY);
+		}
+		//Crouching
+		if(Keyboard.isKeyDown(Keyboard.KEY_LCONTROL))
+		{
+			y = 0.05f;
+		}
+		else
+		{
+			y = 0.0f;
+		}
 		//Mouse controlled FPS cam
 		rotY += Mouse.getDX()/2; //Should be self explanatory
-		rotX += Mouse.getDY(); //You can divide by more to make the camera less sensitive
-		//Mouse.setCursorPosition(400, 300); //This sets the cursor position inside the screen. Unfortunately it also makes the camera really jerky
-		//Looking for a fix
+		rotX -= Mouse.getDY()/2; //You can divide by more to make the camera less sensitive
+		//Mouse.setCursorPosition(410,310);
+		if(Mouse.getX() > 410 || Mouse.getX() < 390)
+		{
+			Mouse.setCursorPosition(400, Mouse.getY());
+		}
+		if(Mouse.getY() > 310 || Mouse.getY() < 290)
+		{
+			Mouse.setCursorPosition(Mouse.getX(), 300);
+		}
 	}
 	
 	public void render()
@@ -28,7 +70,7 @@ public class Player {
 		glMatrixMode(GL_MODELVIEW);
 		glLoadIdentity();
 		glRotatef(rotY,0.0f,1.0f,0.0f);
-		glRotatef(rotX,1.0f,0.0f,0.0f); //This is really sensitive so you may want to comment this out
+		//glRotatef(rotX,1.0f,0.0f,1.0f); //This is really sensitive so you may want to comment this out
 		glTranslatef(x,y,z);
 	}
 }

@@ -11,7 +11,7 @@ public class Map {
 	
 	private boolean loadMap(String fname)
 	{
-		//TODO
+		
 		return true;
 	}
 	
