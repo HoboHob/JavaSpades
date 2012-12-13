@@ -30,3 +30,7 @@ Changelog:
  Version 0.0.4
   - Added collision infrastructure, collisions are very buggy
   - Started adding the first steps to .vxl map loading
+ Version 0.0.5
+  - Collisions are still really buggy, just took them out for now
+  - Still working on the camera
+  - Added camera limiting

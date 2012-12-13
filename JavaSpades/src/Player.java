@@ -4,7 +4,7 @@ import org.lwjgl.input.Keyboard;
 import jspades.util.Trig;
 
 public class Player {
-	public float x,y,z;
+	public float x,y,z,cy; //X/Y/Z are the player coords. CY is y -0.5f and is the y the player is at when the player crouches
 	public float rotY, rotX;
 	
 	public Player(float sx, float sy, float sz, float ry)
@@ -53,6 +53,10 @@ public class Player {
 		//Mouse controlled FPS cam
 		rotY += Mouse.getDX()/2; //Should be self explanatory
 		rotX -= Mouse.getDY()/2; //You can divide by more to make the camera less sensitive
+		if(rotX > 90)
+			rotX = 90;
+		else if(rotX < -90)
+			rotX = -90;
 		//Mouse.setCursorPosition(410,310);
 		if(Mouse.getX() > 410 || Mouse.getX() < 390)
 		{
@@ -70,7 +74,7 @@ public class Player {
 		glMatrixMode(GL_MODELVIEW);
 		glLoadIdentity();
 		glRotatef(rotY,0.0f,1.0f,0.0f);
-		//glRotatef(rotX,1.0f,0.0f,1.0f); //This is really sensitive so you may want to comment this out
+		glRotatef(rotX,1.0f,0.0f,0.0f); //This doesn't work very well oddly :/
 		glTranslatef(x,y,z);
 	}
 }

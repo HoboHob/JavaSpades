@@ -1,4 +1,6 @@
 import jspades.util.Drawing;
+import jspades.util.Types;
+import jspades.util.Collisions;
 
 /*
  * Class description:
@@ -10,10 +12,12 @@ import jspades.util.Drawing;
  */
 
 public class Cube {
-	private float x, y, z;
+	public float x, y, z;
 	private float r, g, b;
+	public Types.CubeState state;
+	public int id;
 	
-	public Cube(float sx, float sy, float sz, float sr, float sg, float sb)
+	public Cube(float sx, float sy, float sz, float sr, float sg, float sb, Types.CubeState ss, int sid)
 	{
 		x = sx;
 		y = sy;
@@ -21,15 +25,27 @@ public class Cube {
 		r = sr;
 		g = sg;
 		b = sb;
+		id = sid;
+		state = ss;
 	}
 	
-	public void update()
+	public void update(Player player)
 	{
-		//TODO
+		if(state == Types.CubeState.VISIBLE)
+		{
+			if(Collisions.cubeCollide(x, y, z, 0.05f, 0.05f, 0.05f, player.x, player.y, player.z, 0.05f, 0.1f, 0.05f))
+			{
+				System.out.println("Collision with block " + id);
+			}
+		}
+		
 	}
 	
 	public void render()
 	{
-		Drawing.Block(x, y, z, r, g, b, 0.05f);
+		if(state == Types.CubeState.VISIBLE)
+		{
+			Drawing.Block(x, y, z, r, g, b, 0.05f);
+		}
 	}
 }

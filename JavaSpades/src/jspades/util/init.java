@@ -1,22 +1,6 @@
 package jspades.util;
 
-import static org.lwjgl.opengl.GL11.GL_DEPTH_TEST;
-import static org.lwjgl.opengl.GL11.GL_LEQUAL;
-import static org.lwjgl.opengl.GL11.GL_MODELVIEW;
-import static org.lwjgl.opengl.GL11.GL_NICEST;
-import static org.lwjgl.opengl.GL11.GL_PERSPECTIVE_CORRECTION_HINT;
-import static org.lwjgl.opengl.GL11.GL_PROJECTION;
-import static org.lwjgl.opengl.GL11.GL_SMOOTH;
-import static org.lwjgl.opengl.GL11.GL_VERSION;
-import static org.lwjgl.opengl.GL11.glClearColor;
-import static org.lwjgl.opengl.GL11.glClearDepth;
-import static org.lwjgl.opengl.GL11.glDepthFunc;
-import static org.lwjgl.opengl.GL11.glEnable;
-import static org.lwjgl.opengl.GL11.glGetString;
-import static org.lwjgl.opengl.GL11.glHint;
-import static org.lwjgl.opengl.GL11.glLoadIdentity;
-import static org.lwjgl.opengl.GL11.glMatrixMode;
-import static org.lwjgl.opengl.GL11.glShadeModel;
+import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.util.glu.GLU.gluPerspective;
 
 import org.lwjgl.LWJGLException;
@@ -32,7 +16,8 @@ import org.lwjgl.opengl.DisplayMode;
  * Created
  */
 
-public class init {
+public class init {	
+	
 	public static void initDisplay()
 	{
 		//Initialize the window
@@ -60,7 +45,7 @@ public class init {
 		
 		//Misc OpenGL stuff
 		glShadeModel(GL_SMOOTH); //Smooth shading enabled
-		glClearColor(0.2f,0.2f,0.2f,0.2f); //Set a nice black background
+		glClearColor(0.0f,0.5f,0.7f,0.0f); //Set a nice black background
 		glClearDepth(1.0f); //Depth stuff that I know nothing about :P
 		glEnable(GL_DEPTH_TEST);
 		glDepthFunc(GL_LEQUAL);

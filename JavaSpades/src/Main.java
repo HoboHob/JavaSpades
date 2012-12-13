@@ -14,14 +14,14 @@ import jspades.util.tick;
  * Class description:
  * The main class used for creating, updating and destroying the game
  * Last changed:
- * 11/13/2012
+ * 12/12/2012
  * Reason:
- * Created
+ * NO LONGER UPDATING THIS, USE GITHUB TO SEE COMMITS
  */
 
 public class Main {
 	private static Map map = new Map();
-	private static Player player = new Player(0.0f,0.0f,0.0f, 0.0f);
+	private static Player player = new Player(0.0f,1.0f,0.0f, 0.0f);
 	
 	public static void main(String[] args) {
 		run();
@@ -52,7 +52,7 @@ public class Main {
 	
 	private static void update()
 	{
-		map.update();
+		map.update(player);
 		player.update();
 	}
 	
